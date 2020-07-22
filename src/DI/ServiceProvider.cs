@@ -16,7 +16,13 @@ namespace Microsoft.Extensions.DependencyInjection
 
         private readonly CallSiteValidator _callSiteValidator;
 
-        internal ServiceProvider(IEnumerable<ServiceDescriptor> serviceDescriptors, ServiceProviderOptions options)
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="serviceDescriptors">Services</param>
+        /// <param name="options">Service provider options</param>
+        /// <exception cref="NotSupportedException"></exception>
+        public ServiceProvider(IEnumerable<ServiceDescriptor> serviceDescriptors, ServiceProviderOptions options)
         {
             IServiceProviderEngineCallback callback = null;
             if (options.ValidateScopes)
