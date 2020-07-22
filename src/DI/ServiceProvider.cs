@@ -10,7 +10,7 @@ namespace Microsoft.Extensions.DependencyInjection
     /// <summary>
     /// The default IServiceProvider.
     /// </summary>
-    public sealed class ServiceProvider : IServiceProvider, IDisposable, IServiceProviderEngineCallback
+    public class ServiceProvider : IServiceProvider, IDisposable, IServiceProviderEngineCallback
     {
         private readonly IServiceProviderEngine _engine;
 
@@ -50,10 +50,10 @@ namespace Microsoft.Extensions.DependencyInjection
         /// </summary>
         /// <param name="serviceType"></param>
         /// <returns></returns>
-        public object GetService(Type serviceType) => _engine.GetService(serviceType);
+        public virtual object GetService(Type serviceType) => _engine.GetService(serviceType);
 
         /// <inheritdoc />
-        public void Dispose() => _engine.Dispose();
+        public virtual void Dispose() => _engine.Dispose();
 
         void IServiceProviderEngineCallback.OnCreate(ServiceCallSite callSite)
         {
